@@ -11,7 +11,7 @@ MOONRAKER_REPO="https://github.com/Arksine/moonraker"
 MOONRAKER_PATH="$HOME/moonraker"
 MOONRAKER_VENV_PATH="$HOME/venv/moonraker"
 
-CLIENT:="fluidd"
+CLIENT="fluidd"
 
 apk add git unzip python2 python2-dev libffi-dev make\
 gcc g++ ncurses-dev avrdude gcc-avr binutils-avr \
