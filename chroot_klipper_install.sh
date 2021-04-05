@@ -70,7 +70,7 @@ tee /etc/caddy/Caddyfile <<EOF
 
 encode gzip
 
-root * $CLIENT_PATH
+root * "$CLIENT_PATH"
 
 @moonraker {
   path /server/* /websocket /printer/* /access/* /api/* /machine/*
@@ -94,7 +94,7 @@ test -d $CLIENT_PATH && rm -rf $CLIENT_PATH
 mkdir -p $CLIENT_PATH
 (cd $CLIENT_PATH && wget -q -O $CLIENT.zip $CLIENT_RELEASE_URL && unzip $CLIENT.zip && rm $CLIENT.zip)
 
-echo "caddy &" >> /etc/rc.local
+echo "caddy start &" >> /etc/rc.local
 
 chmod +x /etc/rc.local
 
