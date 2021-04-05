@@ -42,7 +42,8 @@ test -d $KLIPPY_VENV_PATH || virtualenv -p python2 $KLIPPY_VENV_PATH
 $KLIPPY_VENV_PATH/bin/python -m pip install --upgrade pip
 $KLIPPY_VENV_PATH/bin/pip install -r $KLIPPER_PATH/scripts/klippy-requirements.txt
 
-echo "$KLIPPER_PATH/klippy/klippy.py $CONFIG_PATH/printer.cfg -l /tmp/klippy.log -a /tmp/klippy_uds &" > /etc/rc.local
+echo "#!/bin/sh" > /etc/rc.local
+echo "$KLIPPY_VENV_PATH/bin/python $KLIPPER_PATH/klippy/klippy.py $CONFIG_PATH/printer.cfg -l /tmp/klippy.log -a /tmp/klippy_uds &" >> /etc/rc.local
 
 test -d $MOONRAKER_PATH || git clone $MOONRAKER_REPO $MOONRAKER_PATH
 test -d $MOONRAKER_VENV_PATH || virtualenv -p python3 $MOONRAKER_VENV_PATH
