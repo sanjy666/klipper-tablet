@@ -44,8 +44,6 @@ $KLIPPY_VENV_PATH/bin/pip install -r $KLIPPER_PATH/scripts/klippy-requirements.t
 
 echo "$KLIPPER_PATH/klippy/klippy.py $CONFIG_PATH/printer.cfg -l /tmp/klippy.log -a /tmp/klippy_uds &" > /etc/rc.local
 
-chmod +x /etc/rc.local
-
 test -d $MOONRAKER_PATH || git clone $MOONRAKER_REPO $MOONRAKER_PATH
 test -d $MOONRAKER_VENV_PATH || virtualenv -p python3 $MOONRAKER_VENV_PATH
 $MOONRAKER_VENV_PATH/bin/python -m pip install --upgrade pip
@@ -96,4 +94,6 @@ mkdir -p $CLIENT_PATH
 (cd $CLIENT_PATH && wget -q -O $CLIENT.zip $CLIENT_RELEASE_URL && unzip $CLIENT.zip && rm $CLIENT.zip)
 
 echo "caddy &" >> /etc/rc.local
+
+chmod +x /etc/rc.local
 
